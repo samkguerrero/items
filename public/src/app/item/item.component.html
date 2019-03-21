@@ -1,0 +1,36 @@
+<a style="margin-right: 20px" [routerLink]="['']">Home</a>
+<a [routerLink]="['/edit/',item._id]">Edit Item</a>
+<p>Item name: {{ item.name }}</p>
+<form (submit)="addThing(item._id)" style="padding: 20px">
+    <label for="newThing.content">Content:</label>
+    <div class="red-text" *ngIf="errors.things">
+        {{ errors.things.message }}
+    </div>
+    <input name="newThing.content" [(ngModel)]="newThing.content" type="text">
+    <button class="btn cyan lighten-1">Create</button>
+</form>
+<table class="striped centered">
+  <thead>
+    <tr>
+        <th>Content</th>
+        <th>Actions available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let thing of item.things">
+        <td>{{ thing | json }}</td>
+        <td>
+          <form (submit)="updateThing(thing._id)" style="padding: 20px">
+            <label for="newThingUpdate">Content:</label>
+            <div class="red-text" *ngIf="updateErrors['things.0.content']">
+                {{ updateErrors["things.0.content"].message}}
+            </div>
+            <input name="newThingUpdate.content" [(ngModel)]="newThingUpdate.content" type="text">
+            <button class="btn cyan lighten-1">Update</button>  
+            <button style="margin-right: 5px" class="btn red darken-1" (click)="deleteThing(thing._id)">Delete</button>
+          </form>
+        </td>
+    </tr>
+  </tbody>
+</table>
+

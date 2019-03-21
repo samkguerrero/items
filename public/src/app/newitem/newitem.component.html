@@ -1,9 +1,12 @@
 <a [routerLink]="['/']">Home</a>
-<p>Edit this author:</p>
+<p>New Item:</p>
 <div style="border: 1px solid black;">
-  <form (submit)="updateAuthor()" style="padding: 20px">
+  <form (submit)="createItem()" style="padding: 20px">
     <label for="name">Name:</label>
-    <input name="newAuthorUpdate.name" [(ngModel)]="newAuthorUpdate.name" type="text" value="newAuthorUpdate.name">
+    <div class="red-text" *ngIf="errors.name">
+      {{ errors.name.message }}
+    </div>
+    <input name="newItem.name" [(ngModel)]="newItem.name" type="text">
     <br>
     <button [routerLink]="['/']"  style="margin: 10px 10px 10px 10px;" class="btn cyan lighten-1">Cancel</button>
     <button class="btn cyan lighten-1">Submit</button>

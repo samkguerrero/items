@@ -1,13 +1,14 @@
-const controllers = require("../controllers/authors.js");
+const controllers = require("../controllers/items.js");
 
 module.exports = app => {
   app
-    .get('/api/authors', controllers.getAllAuthors)
-    .get('/api/authors/:id', controllers.getAuthor)
-    .post('/api/authors', controllers.createAuthor)
-    .delete('/api/authors/:id', controllers.deleteAuthor)
-    .put('/api/authors/:id', controllers.updateAuthor)
-    .put('/api/authors/quotes/:id', controllers.addAuthorQuote)
-    .put('/api/authors/write/:id', controllers.updateAuthorQuote)
-    .post('/api/authors/write/:id', controllers.deleteAuthorQuote)
+    .get('/api/items', controllers.getAllItems)
+    .get('/api/items/:id', controllers.getItem)
+    .post('/api/items', controllers.createItem)
+    .delete('/api/items/:id', controllers.deleteItem)
+    .put('/api/items/:id', controllers.updateItem)
+
+    .post('/api/items/:id', controllers.addThing)
+    .put('/api/items/:id/thing/:thingid', controllers.updateThing)
+    .delete('/api/items/:id/thing/:thingid', controllers.deleteThing)
 }

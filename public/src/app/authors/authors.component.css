@@ -1,9 +1,0 @@
-
-table.striped > tbody > tr:nth-child(even) {
-    background-color: rgba(38, 198, 218, 0.5);
-}
-
-th {
-    background-color: rgba(38, 198, 218, 1);
-    color: white;
-}

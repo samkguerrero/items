@@ -7,20 +7,18 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthorsComponent } from './authors/authors.component';
-import { EditauthorComponent } from './editauthor/editauthor.component';
-import { NewauthorComponent } from './newauthor/newauthor.component';
-import { AuthorquotesComponent } from './authorquotes/authorquotes.component';
-import { NewquoteComponent } from './newquote/newquote.component';
+import { ItemsComponent } from './items/items.component';
+import { NewitemComponent } from './newitem/newitem.component';
+import { EdititemComponent } from './edititem/edititem.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorsComponent,
-    EditauthorComponent,
-    NewauthorComponent,
-    AuthorquotesComponent,
-    NewquoteComponent,
+    ItemsComponent,
+    NewitemComponent,
+    EdititemComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,16 @@
-import { AuthorsComponent } from './authors/authors.component';
-import { EditauthorComponent } from './editauthor/editauthor.component';
-import { NewauthorComponent } from './newauthor/newauthor.component';
-import { AuthorquotesComponent } from './authorquotes/authorquotes.component';
-import { NewquoteComponent } from './newquote/newquote.component';
+import { ItemsComponent } from './items/items.component';
+import { NewitemComponent } from './newitem/newitem.component';
+import { EdititemComponent } from './edititem/edititem.component';
+import { ItemComponent } from './item/item.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    {path: '', component: AuthorsComponent },
-    {path: 'new', component: NewauthorComponent },
-    {path: 'edit/:id', component: EditauthorComponent },
-    {path: 'quotes/:id', component: AuthorquotesComponent },
-    {path: 'write/:id', component: NewquoteComponent }
+    {path: '', component: ItemsComponent  },
+    {path: 'new', component: NewitemComponent },
+    {path: 'edit/:id', component: EdititemComponent },
+    {path: 'view/:id', component: ItemComponent },
 ]
 
 @NgModule({

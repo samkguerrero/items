@@ -1,12 +1,14 @@
 <a [routerLink]="['/']">Home</a>
-<p>Add a new quotable author:</p>
+<p>Edit Item</p>
 <div style="border: 1px solid black;">
-  <form (submit)="createAuthor()" style="padding: 20px">
+  <form (submit)="updateItem()" style="padding: 20px">
     <label for="name">Name:</label>
-    <input name="newAuthor.name" [(ngModel)]="newAuthor.name" type="text">
+    <div class="red-text" *ngIf="errors.name">
+        {{ errors.name.message }}
+    </div>
+    <input name="newItemUpdate.name" [(ngModel)]="newItemUpdate.name" type="text" value="newItemUpdate.name">
     <br>
     <button [routerLink]="['/']"  style="margin: 10px 10px 10px 10px;" class="btn cyan lighten-1">Cancel</button>
     <button class="btn cyan lighten-1">Submit</button>
   </form>
 </div>
-

@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 require('../config/mongoose.js');
 
-const AuthorSchema = new mongoose.Schema({
+const Thing = require('../models/thing.js');
+
+const ItemSchema = new mongoose.Schema({
   name: {
     type: String, 
     required: true, 
     minlength: 3
   },
-  quotes: {
-    type: Array
-  }
+  things: [Thing.schema]
 }, {timestamps: true});
 
-module.exports = mongoose.model('Author', AuthorSchema);
+module.exports = mongoose.model('Item', ItemSchema)
