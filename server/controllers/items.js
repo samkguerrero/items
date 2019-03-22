@@ -12,7 +12,7 @@ module.exports = {
   getItem: (req, res) => {
     const ID = req.params.id;
     Item.findOne({_id: ID})
-      .then(task => res.json(task))
+      .then(data => {console.log(); res.json(data)})
       .catch(err => res.json(err));
   },
   
@@ -35,6 +35,12 @@ module.exports = {
     Item.findOneAndUpdate({_id:req.params.id}, DATA, {runValidators:true, new:true})
       .then(data => res.json(data))
       .catch(err => res.json(err));
+  },
+
+  addLike: (req, res) => {
+    Item.findOneAndUpdate({_id:req.params.id}, {$inc: {likes: 1}})
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
   },
 
   addThing: (req, res) => {

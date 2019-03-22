@@ -24,7 +24,10 @@ export class HttpService {
   updateItem(id: string, itemUpdate: any){
     return this._http.put(`/api/items/${id}`, itemUpdate)
   }
-
+  //
+  addLike(id: String) {
+    return this._http.get(`/api/item/like/${id}`)
+  }
   addThing(id: string, thingToAdd: any){
     return this._http.post(`/api/items/${id}`, thingToAdd)
   }

@@ -1,19 +1,24 @@
-<a [routerLink]="['/new']">Add Item</a>
-<p>Items:</p>
+<b>These pets are looking for a home!</b>
+<br>
+<br>
+<a [routerLink]="['/pets/new']">Add a pet to the shelter</a>
+<br>
+<br>
 <table class="striped centered">
   <thead>
     <tr>
-        <th>Item</th>
-        <th>Actions available</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of allItems">
-        <td>{{ item | json }}</td>
+        <td>{{ item.name}}</td>
+        <td>{{ item.type}}</td>
         <td>
-          <button style="margin-right: 5px" class="btn yellow darken-1" [routerLink]="['view/',item._id]">View</button>
-          <button style="margin-right: 5px" class="btn green darken-1" [routerLink]="['edit/',item._id]">Edit</button>
-          <button style="margin-right: 5px" class="btn red darken-1" (click)="deleteItem(item._id)">Delete</button>
+          <button style="margin: 5px" class="btn yellow darken-1" [routerLink]="[item._id]">Details</button>
+          <button style="margin: 5px" class="btn green darken-1" [routerLink]="[item._id,'edit']">Edit</button>
         </td>
     </tr>
   </tbody>

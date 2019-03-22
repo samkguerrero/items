@@ -8,6 +8,7 @@ module.exports = app => {
     .delete('/api/items/:id', controllers.deleteItem)
     .put('/api/items/:id', controllers.updateItem)
 
+    .get('/api/item/like/:id', controllers.addLike)
     .post('/api/items/:id', controllers.addThing)
     .put('/api/items/:id/thing/:thingid', controllers.updateThing)
     .delete('/api/items/:id/thing/:thingid', controllers.deleteThing)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { DisposableFn } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-item',
@@ -10,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ItemComponent implements OnInit {
 
+  likeStatus: boolean = true;
   item: Object;
   itemId: string;
   newThingUpdate: any;
@@ -31,34 +33,49 @@ export class ItemComponent implements OnInit {
     this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
   }
 
-  updateThing(thingid: string) {
-    this._httpService.updateThing(this.itemId,thingid,this.newThingUpdate).subscribe(data => { 
-      console.log("tryingto add")
+  deleteItem(id: string){
+    this._httpService.deleteItem(id).subscribe(data => {
       console.log(data)
-      console.log(data['errors'])
-      if(data['errors']) {
-        this.updateErrors = data['errors']
-      } else {
-        this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
-      }
+      this._router.navigate(['/pets']);
     })
   }
 
-  deleteThing(thingid: string) {
-    this._httpService.deleteThing(this.itemId, thingid).subscribe(data => {
+  // updateThing(thingid: string) {
+  //   this._httpService.updateThing(this.itemId,thingid,this.newThingUpdate).subscribe(data => { 
+  //     console.log("tryingto add")
+  //     console.log(data)
+  //     console.log(data['errors'])
+  //     if(data['errors']) {
+  //       this.updateErrors = data['errors']
+  //     } else {
+  //       this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
+  //     }
+  //   })
+  // }
+
+  // deleteThing(thingid: string) {
+  //   this._httpService.deleteThing(this.itemId, thingid).subscribe(data => {
+  //     console.log(data); 
+  //     this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
+  //   })
+  // }
+
+  addLike(thingid: string) {
+    this._httpService.addLike(this.itemId).subscribe(data => {
       console.log(data); 
       this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
+      this.likeStatus = false;
     })
   }
 
-  addThing() {
-    this._httpService.addThing(this.itemId,this.newThing).subscribe(data => {
-      if(data['errors']) {
-        this.errors = data['errors']
-      } else {
-        this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
-        this.newThing = {content: ""}
-      }
-    })
-  }
+  // addThing() {
+  //   this._httpService.addThing(this.itemId,this.newThing).subscribe(data => {
+  //     if(data['errors']) {
+  //       this.errors = data['errors']
+  //     } else {
+  //       this._httpService.getItem(this.itemId).subscribe(data => this.item = data)
+  //       this.newThing = {content: ""}
+  //     }
+  //   })
+  // }
 }

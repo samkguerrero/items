@@ -7,10 +7,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    {path: '', component: ItemsComponent  },
-    {path: 'new', component: NewitemComponent },
-    {path: 'edit/:id', component: EdititemComponent },
-    {path: 'view/:id', component: ItemComponent },
+    {path: 'pets', component: ItemsComponent  },
+    {path: 'pets/new', component: NewitemComponent },
+    {path: 'pets/:id/edit', component: EdititemComponent },
+    {path: 'pets/:id', component: ItemComponent },
 ]
 
 @NgModule({

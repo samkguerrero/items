@@ -1,14 +1,65 @@
-<a [routerLink]="['/']">Home</a>
-<p>Edit Item</p>
+<p>Edit this pet</p>
+
 <div style="border: 1px solid black;">
   <form (submit)="updateItem()" style="padding: 20px">
-    <label for="name">Name:</label>
-    <div class="red-text" *ngIf="errors.name">
-        {{ errors.name.message }}
-    </div>
-    <input name="newItemUpdate.name" [(ngModel)]="newItemUpdate.name" type="text" value="newItemUpdate.name">
-    <br>
-    <button [routerLink]="['/']"  style="margin: 10px 10px 10px 10px;" class="btn cyan lighten-1">Cancel</button>
-    <button class="btn cyan lighten-1">Submit</button>
+
+      <label for="name">Pet Name:</label>
+      <div class="red-text" *ngIf="errors.name">
+        <p *ngIf="errors.name.kind === 'minlength'">The pet must have a name, longer than three characters.</p>
+        <p *ngIf="errors.name.kind === 'required'">Pet name is a required field</p>
+      </div>
+      <div class="red-text" *ngIf="dupeError.error">
+        <p>The pet must have a unique name, name you choose already exist.</p>
+      </div>
+      <input name="newItemUpdate.name" [(ngModel)]="newItemUpdate.name" type="text">
+      <br>
+  
+      <label for="name">Pet type:</label>
+      <div class="red-text" *ngIf="errors.type">
+        <p *ngIf="errors.type.kind === 'minlength'">Pet type must be longer than three characters, please.</p>
+        <p *ngIf="errors.type.kind === 'required'">Pet type is a required field</p>
+      </div>
+      <input name="newItemUpdate.type" [(ngModel)]="newItemUpdate.type" type="text">
+      <br>
+  
+      <label for="name">Description:</label>
+      <div class="red-text" *ngIf="errors.desc">
+        <p *ngIf="errors.desc.kind === 'minlength'">Pet description must be longer than three characters, please.</p>
+        <p *ngIf="errors.desc.kind === 'required'">Pet Description is a required field</p>
+      </div>
+      <input name="newItemUpdate.desc" [(ngModel)]="newItemUpdate.desc" type="text">
+      <br>
+  
+      <p>Skills:</p>
+      <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10">
+            <ul>
+                <li>
+                <label for="name">Skill 1:</label>
+                <input name="newItemUpdate.skill1" [(ngModel)]="newItemUpdate.skill1" type="text">
+                <br>
+                </li>
+            
+                <li>
+                <label for="name">Skill 2:</label>
+                <input name="newItemUpdate.skill2" [(ngModel)]="newItemUpdate.skill2" type="text">
+                <br>
+                </li>
+            
+                <li>
+                <label for="name">Skill 3:</label>
+                <input name="newItemUpdate.skill3" [(ngModel)]="newItemUpdate.skill3" type="text">
+                <br>
+                </li>
+
+              </ul>
+        </div>
+  
+      </div>
+
+      <button class="btn cyan lighten-1">Edit pet</button>
+      <button [routerLink]="['/pets']"  style="margin: 10px 10px 10px 10px;" class="btn cyan lighten-1">Cancel</button>
+
   </form>
 </div>
